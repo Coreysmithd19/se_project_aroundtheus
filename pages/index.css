@@ -1,6 +1,10 @@
+@import url(../vendor/fonts.css);
+@import url(../vendor/normalize.css);
+
 .page{
     background-color: black;
     color: white;
+    box-sizing: border-box;
 }
 
 .page__content{
@@ -35,9 +39,8 @@
     grid-template-areas: 
     "title button"
     "desciption description"; 
-    height: 77px;   
-    width: 415px;
-    justify-content: flex-start;
+    height: 77px;  
+    grid-template-columns: minmax(auto, 375px) auto;
     align-items: center;
     gap: 0 18px;
 }
@@ -54,7 +57,6 @@
 .profile__title{
     margin: 0;
     padding-bottom: 10px;
-    max-width: 415px;
     font-size: 42px;
     font-style: normal;
     font-weight: 500;
@@ -63,13 +65,14 @@
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
+    font-family: Inter,Arial, Helvetica, sans-serif;
+    line-height: 48px;
 }
 
 .profile__edit-button{
- background: transparent url(../images/Edit\ Button.svg) center no-repeat;
+ background: transparent url(../images/Edit-button.svg) center no-repeat;
  height: 24px;
  width: 24px;
- border: 1px;
  align-self: center;
  grid-area: button;
  border: solid white 1px;
@@ -82,6 +85,10 @@
  grid-area: desciption;
  text-align: left;
  margin: 0;
+ text-overflow: ellipsis;
+ white-space: nowrap;
+ overflow: hidden;
+ font-family: Inter, Arial, Helvetica, sans-serif;
 }
 
 .profile__add-button{
@@ -131,6 +138,17 @@ margin-top: 50px;
     justify-content: space-between;
 }
 
+.card__title{
+    font-family: Inter, Arial, Helvetica, sans-serif;
+    font-size: 24px;
+    font-weight: 900;
+    line-height: 29.05px;
+    overflow: hidden;
+    max-width: 219px; 
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
 .card__like-button{
     background: transparent url(../images/Like-inactive.svg) center no-repeat;
     height: 18px; 
@@ -138,16 +156,46 @@ margin-top: 50px;
     border: none;
 }
 
-@media screen and (max-width:620px) {
+.footer{
+ margin-bottom: 60px;
+ margin-top: 67px;
+ color: #545454;
+}
+
+.footer__title{
+ width: 318px;
+ height: 18px;
+ font-family: Inter;
+ font-size: 18px;
+ font-weight: 400;
+ line-height: 21.78px;
+}
+
+.card__like-button:hover{
+  cursor: pointer;
+  opacity: 50%;
+}
+
+.profile__add-button:hover{
+    cursor: pointer;
+    opacity: 60%;
+}
+
+.profile__edit-button:hover{
+    cursor: pointer;
+    opacity: 60%;
+}
+
+@media screen and (max-width:420px) {
     
     .page{
         padding: 0;
     }
 
-
     .profile{
       flex-direction: column;
       justify-content: center;
+      height: 282px;
     }
 
     .profile__info{
@@ -156,7 +204,8 @@ margin-top: 50px;
         max-width: 282px;
         justify-content: center;
         align-items: center;
-
+        padding-top: 30px;
+        gap: 0 14px;
     }
 
     .profile__description{
@@ -176,8 +225,7 @@ margin-top: 50px;
         text-align: center;
         font-size: 22px;
         line-height: normal;
-        padding-left: 27px;
-        max-width: 224px;
+        max-width: 196px;
         padding-bottom: 0;
     }
 
@@ -187,4 +235,7 @@ margin-top: 50px;
         margin: 0;
     }
 
+    .cards{
+        margin-top: 36px;
+    }
 }
