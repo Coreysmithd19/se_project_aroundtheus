@@ -9,5 +9,5 @@ This project is about creating a page for Jacques Cousteau trip around the US an
   
 **Links**  
   
-* [Link to the project]((https://coreysmithd19.github.io/se_project_aroundtheus/)
+* [Link to the project](https://coreysmithd19.github.io/se_project_aroundtheus/)
 * [Link to the video](https://www.figma.com/file/ii4xxsJ0ghevUOcssTlHZv/Sprint-3%3A-Around-the-US?node-id=0%3A1) 
