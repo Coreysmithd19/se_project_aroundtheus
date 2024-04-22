@@ -1,7 +1,8 @@
 .header{
     padding-top: 45px;
-    height: 74px;
-    border-bottom: #545454 ;
+    border-bottom: rgba(84, 84, 84, 1);
+    opacity: 70%;
     border-bottom-style: solid;
     border-bottom-width: 1px;
+    padding-bottom: 41px;
 }
