@@ -1,8 +1,24 @@
 .header{
     padding-top: 45px;
     border-bottom: rgba(84, 84, 84, 1);
-    opacity: 70%;
+    opacity: 1;
     border-bottom-style: solid;
     border-bottom-width: 1px;
     padding-bottom: 41px;
+}
+
+@media screen and (max-width:420px) {
+    .header{
+        height: 56px;
+        padding-top: 28px;
+        padding-bottom: 0;
+    }
+
+    .logo{
+        width: 126px;
+        height: 24px; 
+        left: 27px;
+        position: relative;   
+    }
+
 }

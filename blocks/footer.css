@@ -12,3 +12,17 @@
     line-height: 21.78px;
     margin: 0;
    }
+
+   @media screen and (max-width:420px) {
+    .footer{
+       padding-top: 48px;
+       padding-bottom: 36px;
+       left: 19px;
+        }
+    
+    .footer__title{
+        height: 14px;
+        max-width: 282px;
+    }
+    
+    }
