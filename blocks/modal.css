@@ -5,17 +5,18 @@
     right: 0;
     bottom: 0;
     z-index: 999;
-    display: flex;
     background-color: rgba(0,0,0,.5);
     padding: 0 19px;
     align-content: center;
     justify-content: center;
     flex-wrap: wrap;
+    display: none;
 }
 
-.modal__opened{
-    display: flex;
+.modal__opened {
+ display: flex;
 }
+
 
 .modal__container{
     background-color: white;
@@ -24,10 +25,10 @@
     padding: 36px;
     width: 430px;
     height: 330px;
-    border: 1px;
+    margin: auto;
 }
 
-.modal__close{
+.modal__close-button{
     background-repeat: no-repeat;
     background-image: url(../images/Close.svg);
     background-size:contain;
