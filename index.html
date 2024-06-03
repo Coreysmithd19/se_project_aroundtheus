@@ -24,50 +24,7 @@
           <button class="profile__add-button" type="button" id="profile__add-button"></button>
          </section>
            <section class="cards page__section">
-         <ul class="cards__list">
-            <li class="card">
-             <img src="./images/yosemite.jpg" alt="Around The U.S. Image" class=" card__image"/>
-             <div class="card__description">
-                <h2 class="card__title">Yosemite Valley</h2>
-              <button class="card__like-button" type="button" id="card__like-button-YW"></button>
-              </div>
-            </li>
-            <li class="card">
-                <img src="./images/lake-louise.png" alt="Around The U.S. Image" class=" card__image"/>
-                <div class="card__description">
-                   <h2 class="card__title">Lake Louise</h2>
-                 <button class="card__like-button"  type="button" id="card__like-button-ll"></button>
-                 </div>
-               </li>
-               <li class="card">
-                <img src="./images/bald-mountains.jpg" alt="Around The U.S. Image" class=" card__image"/>
-                <div class="card__description">
-                   <h2 class="card__title">Bald Mountains</h2>
-                 <button class="card__like-button"  type="button" id="card__like-button-BM"></button>
-                 </div>
-               </li>
-               <li class="card">
-                <img src="./images/latemar.jpg" alt="Around The U.S. Image" class=" card__image"/>
-                <div class="card__description">
-                   <h2 class="card__title">Latemar</h2>
-                 <button class="card__like-button"  type="button" id="card__like-button-L"></button>
-                 </div>
-               </li>
-               <li class="card">
-                <img src="./images/vanoise.jpg" alt="Around The U.S. Image" class=" card__image"/>
-                <div class="card__description">
-                   <h2 class="card__title">Vanoise Nationa...</h2>
-                 <button class="card__like-button"  type="button" id="card__like-button-VN"></button>
-                 </div>
-               </li>
-               <li class="card">
-                <img src="./images/lago.jpg" alt="Around The U.S. Image" class=" card__image"/>
-                <div class="card__description">
-                   <h2 class="card__title">Lago di Braies</h2>
-                 <button class="card__like-button"  type="button" id="card__like-button-LDB"></button>
-                 </div>
-               </li>
-          </ul>
+             <ul class="cards__list"></ul>
            </section>
            <footer class="footer">
             <p class="footer__title">© 2022 Around The U.S.</p>
@@ -79,12 +36,22 @@
       <button class="modal__close-button" type="button" id="modal-closed-button"></button>
       <p class="modal__heading">Edit Profile</p>
       <form class="modal__form">
-        <input type="text" name="title" placeholder="Name">
-        <input type="text" name="description" placeholder="Description">
+        <input type="text" name="title" placeholder="Name" id="profile-title-input">
+        <input type="text" name="description" placeholder="Description" id="profile-description-input">
         <button class="modal__button">Save</button>
       </form>
      </div>
     </div>
+
+    <template id="card-template">
+      <li class="card">
+        <img src="" alt="" class=" card__image"/>
+        <div class="card__description">
+           <h2 class="card__title"></h2>
+         <button class="card__like-button" type="button"></button>
+         </div>
+       </li>
+    </template>
     <script src="./scripts/index.js"></script>
 </body>
 </html>
