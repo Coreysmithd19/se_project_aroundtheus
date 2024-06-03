@@ -37,23 +37,21 @@ const cardTemplate = document.querySelector("#card-template").content.firstEleme
 const cardListEl = document.querySelector(".cards__list");
 
 function closePopUp() {
-  profileEditModal.classList.remove("modal__opened");
+  profileEditModal.classList.remove("modal_opened");
+}
+
+function openPopUp() {
+  profileEditModal.classList.add("modal_opened");
 }
 
 function getCardElement(cardData) {
-//clone the template element with all its content and store it in a cardElement variable
-const cardElement = cardTemplate.cloneNode(true);
-//access the card title and image and store them in variables
-const cardImage = cardElement.querySelector(".card__image");
-const cardTitleEl = cardElement.querySelector(".card__title");
-//set the path to the image to the link field of the object
-cardImage.src = cardData.link;
-//set the image alt text to the name field of the object
-cardImage.alt = cardData.name;
-//set the card title to the name field of the object, too
-cardTitleEl.textContent = cardData.name;
-//return the ready HTML element with the filled-in data
-return cardElement;
+ const cardElement = cardTemplate.cloneNode(true);
+ const cardImage = cardElement.querySelector(".card__image");
+ const cardTitleEl = cardElement.querySelector(".card__title");
+ cardImage.src = cardData.link;
+ cardImage.alt = cardData.name;
+ cardTitleEl.textContent = cardData.name;
+ return cardElement;
 };
 
 function handleProfileEditSubmit(e){
@@ -66,7 +64,7 @@ function handleProfileEditSubmit(e){
 profileEditButton.addEventListener( "click" , () => {
  profileTitleInput.value = profileTitle.textContent;
  profileDescriptionInput.value = profileDescription.textContent;
- profileEditModal.classList.add("modal__opened");
+ openPopUp();
 });
 
 profileModalCloseButton.addEventListener("click", closePopUp);
