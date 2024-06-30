@@ -10,11 +10,17 @@
     align-content: center;
     justify-content: center;
     flex-wrap: wrap;
-    display: none;
+    display: flex;
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s linear 0.3s, opacity 0.3s linear;
 }
 
 .modal_opened {
- display: flex;
+ visibility: visible;
+ pointer-events: all;
+ opacity: 1;
+ transition-delay: 0s;
 }
 
 
@@ -96,6 +102,31 @@
     position: relative;
     margin: 0;
     font-family: Inter, Arial, Helvetica, sans-serif;
+  }
+
+  .modal__container_type_preview{
+    background: transparent;
+    max-width: 75vw;
+    max-height: 75vh;
+    width: auto;
+    height: auto;
+    display: flex;
+  }
+
+  .modal__imgae_popup{
+    max-width: 100%;
+    max-width: 100%;
+    object-fit: cover;
+    justify-content:center;
+  }
+
+  .modal__image_title{
+    margin-top: 5px;
+    font-family: Inter, Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 14.52px;
+    text-align: left;
   }
 
   @media screen and (max-width:420px) {
