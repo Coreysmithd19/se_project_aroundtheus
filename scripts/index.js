@@ -64,19 +64,19 @@ function getCardElement(cardData) {
   const cardElement = cardTemplate.cloneNode(true);
   const cardImage = cardElement.querySelector(".card__image");
   const cardTitleEl = cardElement.querySelector(".card__title");
-  const LikeButton = cardElement.querySelector(".card__like-button");
-  const TrashButton = cardElement.querySelector(".card__trash-button")
+  const likeButton = cardElement.querySelector(".card__like-button");
+  const trashButton = cardElement.querySelector(".card__trash-button")
 
   cardImage.src = cardData.link;
   cardImage.alt = cardData.name;
   cardTitleEl.textContent = cardData.name;
 
-  TrashButton.addEventListener("click", () => {
+  trashButton.addEventListener("click", () => {
     cardElement.remove();
   });
 
-  LikeButton.addEventListener("click", () => {
-    LikeButton.classList.toggle("card__like-button-active")
+  likeButton.addEventListener("click", () => {
+    likeButton.classList.toggle("card__like-button-active")
   });
 
   cardImage.addEventListener("click", function () {
