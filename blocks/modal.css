@@ -118,6 +118,10 @@
     max-width: 100%;
     object-fit: cover;
     justify-content:center;
+    width: 433px;
+    height: 540px;
+    top: 90px;
+    left: 424px;
   }
 
   .modal__image_title{
@@ -131,11 +135,19 @@
 
   @media screen and (max-width:420px) {
     .modal__form {
+        top: 76px;
         width: 238px;
+        padding: 22px;
+        gap: 30px;
     }
     
     .modal__form button{
         height: 46px;
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 16.94px;
+        text-align: center;
+
     }
 
     .modal__close-button{
@@ -147,7 +159,28 @@
     .modal__container{
         height: 322px;
         width: 282px;
-        padding: 22px;
     }
     
+    .modal__heading{
+      top: 25px;
+      left: 22px;
+      font-family: Inter;
+      font-size: 18px;
+      font-weight: 900;
+      line-height: 21.78px;
+      text-align: left;
+    }
+
+    .modal__form-input{
+      height: 26px;
+    }
+
+    .modal__imgae_popup{
+      width: 240px;
+      height: 299px;
+      top: 136px;
+      left: 40px;
+      opacity: 0px;
+
+    }
   }
