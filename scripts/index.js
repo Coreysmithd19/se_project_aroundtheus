@@ -44,7 +44,7 @@ const previewImageButtonClose = previewImageModal.querySelector("#modal-closed-b
 const previewImageTitle = document.querySelector(".modal__image_title");
 const addCardForm = addCardModal.querySelector("#add-card-form");
 const cardTitleInput = addCardForm.querySelector("#place-title");
-const cardUrlInput = addCardForm.querySelector("#profile-image");
+const cardUrlInput = addCardForm.querySelector("#place-image");
 
 function closePopUp(modal) {
  modal.classList.remove("modal_opened");
