@@ -43,21 +43,39 @@ const previewImage = document.querySelector(".modal__imgae_popup");
 const previewImageButtonClose = previewImageModal.querySelector("#modal-closed-button");
 const previewImageTitle = document.querySelector(".modal__image_title");
 const addCardForm = addCardModal.querySelector("#add-card-form");
-const cardTitleInput = addCardForm.querySelector(".modal__input_type_title");
-const cardUrlInput = addCardForm.querySelector(".modal__input_type_url");
+const cardTitleInput = addCardForm.querySelector("#place-title");
+const cardUrlInput = addCardForm.querySelector("#profile-image");
 
 function closePopUp(modal) {
  modal.classList.remove("modal_opened");
+ document.removeEventListener("keydown", handleEsc);
+ modal.removeEventListener("mousedown", handleModalClick);
 }
 
 function openPopUp(modal) {
  modal.classList.add("modal_opened");
+ document.addEventListener("keydown", handleEsc);
+ modal.addEventListener("mousedown", handleModalClick);
 }
+
 
 function renderCard(cardData) {
   const cardElement = getCardElement(cardData);
   cardListEl.prepend(cardElement);
 }
+
+function handleModalClick(e) {
+  if (e.currentTarget === e.target || e.target.classList.contains("modal__close")) {
+    closePopUp(e.currentTarget)
+  }
+}
+
+function handleEsc(e) {
+  if (e.key === "Escape") {
+    const openedModal = document.querySelector(".modal_opened");
+    closePopUp(openedModal);
+  }
+};
 
 
 function getCardElement(cardData) {

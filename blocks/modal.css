@@ -87,6 +87,11 @@
     cursor: pointer;
   }
 
+  .modal__button_disabled {
+    background-color: white;
+    color: gray;
+}
+
   .modal__button:hover{
     opacity: 0.8;
   }
@@ -132,6 +137,29 @@
     line-height: 14.52px;
     text-align: left;
   }
+
+  .modal__popup-error {
+    position: absolute;
+    top: 35px;
+}
+
+.modal__popup_error_visible {
+    font-family: "Inter", Arial, sans-serif;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 1.2;
+    color: #FF0000;
+}
+
+.modal__popup_input_type_error {
+    border-bottom: 1px solid #FF0000;
+}
+
+.modal__label{
+position: relative;
+display: flex;
+flex-direction: column;
+}
 
   @media screen and (max-width:420px) {
     .modal__form {
