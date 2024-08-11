@@ -38,17 +38,18 @@ function toggleButtonState(inputEls, submitButton, {inactiveButtonClass}) {
     }
   }
 
-  function setEventListeners(formEl, config) {
-    const { inputSelector } = config;
-    const inputEls = [...formEl.querySelectorAll(".modal__form-input")];
-    const submitButton = formEl.querySelector(".modal__button");
-  
+  function setEventListeners(formEl, options) {
+    const { inputSelector } = options;
+    const inputEls = [...formEl.querySelectorAll(inputSelector)];
+    const submitButton = formEl.querySelector(options.submitButtonSelector);
     inputEls.forEach((inputEl) => {
-      inputEl.addEventListener("input", () => {
-        checkInputValidity(formEl, inputEl, config);
-        toggleButtonState(inputEls, submitButton, config);
+      inputEl.addEventListener("input", (e) => {
+        checkInputValidity(formEl, inputEl, options);
+        toggleButtonState(inputEls, submitButton, options);
       });
     });
+  
+    toggleButtonState(inputEls, submitButton, options);
   }
   
   function enableValidation(config) {
@@ -63,7 +64,7 @@ function toggleButtonState(inputEls, submitButton, {inactiveButtonClass}) {
   
 const config = {
     formSelector: ".modal__form",
-    inputSelector: ".modal__input",
+    inputSelector: ".modal__form-input",
     submitButtonSelector: ".modal__button",
     inactiveButtonClass: "modal__button_disabled",
     inputErrorClass: "modal__popup_input_type_error",

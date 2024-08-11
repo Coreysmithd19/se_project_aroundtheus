@@ -39,9 +39,9 @@ const addNewCardButton = document.querySelector(".profile__add-button");
 const addCardModal = document.querySelector("#add-card-modal")
 const addNewCardButtonClose = addCardModal.querySelector("#modal-closed-button");
 const previewImageModal = document.querySelector("#preview-image");
-const previewImage = document.querySelector(".modal__imgae_popup");
+const previewImage = document.querySelector(".modal__imgae");
 const previewImageButtonClose = previewImageModal.querySelector("#modal-closed-button");
-const previewImageTitle = document.querySelector(".modal__image_title");
+const previewImageTitle = document.querySelector(".modal__title");
 const addCardForm = addCardModal.querySelector("#add-card-form");
 const cardTitleInput = addCardForm.querySelector("#place-title");
 const cardUrlInput = addCardForm.querySelector("#place-image");
@@ -65,7 +65,7 @@ function renderCard(cardData) {
 }
 
 function handleModalClick(e) {
-  if (e.currentTarget === e.target || e.target.classList.contains("modal__close")) {
+  if (e.currentTarget === e.target || e.target.classList.contains("modal__close-button")) {
     closePopUp(e.currentTarget)
   }
 }
