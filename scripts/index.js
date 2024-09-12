@@ -30,9 +30,10 @@ const initialCards = [
     },
 ];
 
+const cardSelector = document.querySelector("#card-template");
 
 function createCard(cardData) {
-  const card = new Card(cardData, "#card-template", handleImageClick);
+  const card = new Card(cardData, cardSelector, handleImageClick);
     return card.getView();
   }
 
@@ -70,7 +71,7 @@ function openPopUp(modal) {
 }
 
 
-function renderCard(cardData, cardListEl) {
+function renderCard(cardData) {
   const cardElement = createCard(cardData);
   cardListEl.prepend(cardElement);
 }
