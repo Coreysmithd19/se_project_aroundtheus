@@ -75,10 +75,6 @@ function renderCard(cardData, cardListEl) {
   cardListEl.prepend(cardElement);
 }
 
-// function renderCard(cardData, wrapper) {
-//   const cardEl = createCard(cardData);
-//   wrapper.prepend(cardEl);
-// }
 
 function handleModalClick(e) {
   if (e.currentTarget === e.target || e.target.classList.contains("modal__close-button")) {
