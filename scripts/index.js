@@ -33,7 +33,7 @@ const initialCards = [
 const cardSelector = document.querySelector("#card-template");
 
 function createCard(cardData) {
-  const card = new Card(cardData, cardSelector, handleImageClick);
+  const card = new Card(cardData, "#card-template");
     return card.getView();
   }
 
@@ -131,4 +131,4 @@ addCardForm.addEventListener("submit", handleNewCardSubmit);
 
 addNewCardButton.addEventListener( "click" , () => openPopUp(addCardModal));
 
-initialCards.forEach((cardData) => renderCard(cardData, cardListEl));
+initialCards.forEach((cardData) => renderCard(cardData));
