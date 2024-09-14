@@ -2,7 +2,6 @@ import Card from "./Card.js";
 
 import FormValidator from"./FormValidator.js";
 
-
 const initialCards = [
     {
     name:"Yosemite Valley",
@@ -30,12 +29,6 @@ const initialCards = [
     },
 ];
 
-const cardSelector = document.querySelector("#card-template");
-
-function createCard(cardData) {
-  const card = new Card(cardData, "#card-template");
-    return card.getView();
-  }
 
 const profileEditButton =document.querySelector("#profile__edit-button");
 const profileEditModal = document.querySelector("#profile__edit-modal");
@@ -58,6 +51,7 @@ const addCardForm = addCardModal.querySelector("#add-card-form");
 const cardTitleInput = addCardForm.querySelector("#place-title");
 const cardUrlInput = addCardForm.querySelector("#place-image");
 
+
 function closePopUp(modal) {
  modal.classList.remove("modal_opened");
  document.removeEventListener("keydown", handleEsc);
@@ -70,9 +64,20 @@ function openPopUp(modal) {
  modal.addEventListener("mousedown", handleModalClick);
 }
 
+function getCardElement(cardData) {
+  const card = new Card(cardData, "#card-template" , handleImageClick);
+  return card.getView();
+}
+
+function handleImageClick(card) {
+  previewImage.src = card.link;
+  previewImage.alt = card.aname;
+  previewImageTitle.textContent = card.name;
+  openPopUp(previewImageModal);
+}
 
 function renderCard(cardData) {
-  const cardElement = createCard(cardData);
+  const cardElement = getCardElement(cardData);
   cardListEl.prepend(cardElement);
 }
 
@@ -90,7 +95,7 @@ function handleEsc(e) {
   }
 };
 
-const settings = {
+const config = {
   formSelector: ".modal__form",
   inputSelector: ".modal__form-input",
   submitButtonSelector: ".modal__button",
@@ -99,9 +104,10 @@ const settings = {
   errorClass: "modal__popup_error_visible",
 };
 
-const editFormValidator = new FormValidator( settings, profileEditForm );
-const addFormValidator = new FormValidator( settings, addCardForm );
- 
+const editFormValidator = new FormValidator( config, profileEditForm );
+const addFormValidator = new FormValidator( config, addCardForm );
+editFormValidator.enableValidation();
+addFormValidator.enableValidation();
 
 function handleProfileEditSubmit(e){
   e.preventDefault();
@@ -130,5 +136,6 @@ profileEditForm.addEventListener("submit", handleProfileEditSubmit);
 addCardForm.addEventListener("submit", handleNewCardSubmit);
 
 addNewCardButton.addEventListener( "click" , () => openPopUp(addCardModal));
+
 
 initialCards.forEach((cardData) => renderCard(cardData));
