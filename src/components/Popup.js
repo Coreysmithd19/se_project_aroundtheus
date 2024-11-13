@@ -16,7 +16,7 @@
       modal.removeEventListener("mousedown", handleModalClick);
     }
 
-    handleEscClose (e) {
+    handleEsc(e) {
      if (e.key === "Escape") {
             closePopUp(this.openedModal);
           }

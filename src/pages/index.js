@@ -7,6 +7,8 @@ import Section from "../components/Section.js";
 
 import "./index.css"
 
+import PopupWithForm from "../components/PopupWithForm.js"
+
 const initialCards = [
     {
     name:"Yosemite Valley",
@@ -88,7 +90,6 @@ const config = {
 };
 
 const newCardPopup = new PopupWithForm("#add-card-form",handleNewCardSubmit);
-newCardPopup.open();
 
 const editFormValidator = new FormValidator( config, profileEditForm );
 const addFormValidator = new FormValidator( config, addCardForm );
@@ -121,7 +122,9 @@ profileEditForm.addEventListener("submit", handleProfileEditSubmit);
 
 addCardForm.addEventListener("submit", handleNewCardSubmit);
 
-addNewCardButton.addEventListener( "click" , () => openPopUp(addCardModal));
+addNewCardButton.addEventListener( "click" , () => {
+  newCardPopup.open();
+});
 
 
 initialCards.forEach((cardData) => renderCard(cardData));
