@@ -8,6 +8,7 @@ import Section from "../components/Section.js";
 import "./index.css"
 
 import PopupWithForm from "../components/PopupWithForm.js"
+import PopupWithIamge from "../components/PopupWithImage.js";
 
 const initialCards = [
     {
@@ -60,18 +61,18 @@ const cardUrlInput = addCardForm.querySelector("#place-image");
 
 
 
-
 function getCardElement(cardData) {
   const card = new Card(cardData, "#card-template" , handleImageClick);
   return card.getView();
 }
 
-function handleImageClick(card) {
-  previewImage.src = card.link;
-  previewImage.alt = card.aname;
-  previewImageTitle.textContent = card.name;
-  openPopUp(previewImageModal);
+const popupWithIamge = new PopupWithIamge("#preview-image");
+
+function handleImageClick(data) {
+  popupWithIamge.open({ name: data.name, link: data.link });
 }
+
+
 
 function renderCard(cardData) {
   const cardElement = getCardElement(cardData);
@@ -89,7 +90,16 @@ const config = {
   errorClass: "modal__popup_error_visible",
 };
 
-const newCardPopup = new PopupWithForm("#add-card-form",handleNewCardSubmit);
+const popupWithEditProfileForm = new PopupWithForm(
+  "#profile__edit-modal",
+  handleProfileEditSubmit
+);
+
+const newCardPopup = new PopupWithForm(
+  "#add-card-modal",
+  handleProfileEditSubmit
+);
+
 
 const editFormValidator = new FormValidator( config, profileEditForm );
 const addFormValidator = new FormValidator( config, addCardForm );
@@ -112,19 +122,18 @@ function handleNewCardSubmit(e){
   closePopUp(addCardModal);
 };
 
-profileEditButton.addEventListener( "click" , () =>  {
-  profileTitleInput.value = profileTitle.textContent;
-  profileDescriptionInput.value = profileDescription.textContent;
-  openPopUp(profileEditModal);
+profileEditButton.addEventListener("click", () => {
+  popupWithEditProfileForm.open();
 });
-
-profileEditForm.addEventListener("submit", handleProfileEditSubmit);
-
-addCardForm.addEventListener("submit", handleNewCardSubmit);
 
 addNewCardButton.addEventListener( "click" , () => {
   newCardPopup.open();
 });
+
+
+profileEditForm.addEventListener("submit", handleProfileEditSubmit);
+
+addCardForm.addEventListener("submit", handleNewCardSubmit);
 
 
 initialCards.forEach((cardData) => renderCard(cardData));
