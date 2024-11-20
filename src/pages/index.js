@@ -66,7 +66,7 @@ function getCardElement(cardData) {
   return card.getView();
 }
 
-const popupWithIamge = new PopupWithIamge("#preview-image");
+const popupWithIamge = new PopupWithIamge(previewImageModal);
 
 function handleImageClick(data) {
   popupWithIamge.open({ name: data.name, link: data.link });
@@ -129,6 +129,7 @@ profileEditButton.addEventListener("click", () => {
 addNewCardButton.addEventListener( "click" , () => {
   newCardPopup.open();
 });
+
 
 
 profileEditForm.addEventListener("submit", handleProfileEditSubmit);
