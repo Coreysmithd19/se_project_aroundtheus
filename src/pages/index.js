@@ -8,7 +8,7 @@ import Section from "../components/Section.js";
 import "./index.css"
 
 import PopupWithForm from "../components/PopupWithForm.js"
-import PopupWithIamge from "../components/PopupWithImage.js";
+import PopupWithImage from "../components/PopupWithImage.js";
 
 const initialCards = [
     {
@@ -66,11 +66,14 @@ function getCardElement(cardData) {
   return card.getView();
 }
 
-const popupWithIamge = new PopupWithIamge(previewImageModal);
+const popupWithImage = new PopupWithImage(previewImageModal);
+
+
 
 function handleImageClick(data) {
-  popupWithIamge.open({ name: data.name, link: data.link });
+  popupWithImage.open({ name: data._name, link: data._link });
 }
+
 
 
 
