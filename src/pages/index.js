@@ -66,16 +66,12 @@ function getCardElement(cardData) {
   return card.getView();
 }
 
-const popupWithImage = new PopupWithImage(previewImageModal);
-
+const popupWithImage = new PopupWithImage("#preview-image");
 
 
 function handleImageClick(data) {
-  popupWithImage.open({ name: data._name, link: data._link });
+  popupWithImage.open({ name: data.name, link: data.link });
 }
-
-
-
 
 function renderCard(cardData) {
   const cardElement = getCardElement(cardData);
