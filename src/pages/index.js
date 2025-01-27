@@ -109,7 +109,7 @@ function handleProfileEditSubmit(e){
   e.preventDefault();
   profileTitle.textContent = profileTitleInput.value;
   profileDescription.textContent = profileDescriptionInput.value;
-  closePopUp(profileEditModal);
+  close(profileEditModal);
 };
 
 function handleNewCardSubmit(e){
@@ -118,7 +118,7 @@ function handleNewCardSubmit(e){
   const link = cardUrlInput.value;
   renderCard({ name, link}, cardListEl);
   e.target.reset();
-  closePopUp(addCardModal);
+  close(addCardModal);
 };
 
 profileEditButton.addEventListener("click", () => {
@@ -142,7 +142,7 @@ const cardSection = new Section(
   {
     items: initialCards,
     renderer: (cardData) => {
-      const card = new Card(cardData, cardSelector, handleImageClick);
+      const card = new Card({cardData}, "#card-template" , handleImageClick);
       const cardElement = card.getView();
       cardSection.addItem(cardElement);
     },
