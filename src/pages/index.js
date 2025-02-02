@@ -9,6 +9,7 @@ import "./index.css"
 
 import PopupWithForm from "../components/PopupWithForm.js"
 import PopupWithImage from "../components/PopupWithImage.js";
+import UserInfo from "../components/Userinfo.js";
 
 const initialCards = [
     {
@@ -100,15 +101,17 @@ const newCardPopup = new PopupWithForm(
 );
 
 
+const userInfo = new UserInfo(profileTitle, profileDescription)
+
+
+
 const editFormValidator = new FormValidator( config, profileEditForm );
 const addFormValidator = new FormValidator( config, addCardForm );
 editFormValidator.enableValidation();
 addFormValidator.enableValidation();
 
-function handleProfileEditSubmit(e){
-  e.preventDefault();
-  profileTitle.textContent = profileTitleInput.value;
-  profileDescription.textContent = profileDescriptionInput.value;
+function handleProfileEditSubmit({name, job}){
+  userInfo.setUserInfo({name, job});
   close(profileEditModal);
 };
 
@@ -122,6 +125,10 @@ function handleNewCardSubmit(e){
 };
 
 profileEditButton.addEventListener("click", () => {
+  const userData = userInfo.getUserInfo();
+  profileTitleInput.value = userData.name;
+  profileDescriptionInput.value = userData.job;
+
   popupWithEditProfileForm.open();
 });
 
@@ -138,16 +145,17 @@ addCardForm.addEventListener("submit", handleNewCardSubmit);
 
 initialCards.forEach((cardData) => renderCard(cardData));
 
-const cardSection = new Section(
-  {
-    items: initialCards,
-    renderer: (cardData) => {
-      const card = new Card({cardData}, "#card-template" , handleImageClick);
-      const cardElement = card.getView();
-      cardSection.addItem(cardElement);
+
+  const cardSection = new Section(
+    {
+      items: initialCards,
+      renderer: (cardData) => {
+        const card = new Card(cardData, "#card-template" , handleImageClick);
+        const cardElement = card.getView();
+        cardSection.addItem(cardElement);
+      },
     },
-  },
-  ".cards__list");
+    ".cards__list");
 
 cardSection.renderItems();
 
