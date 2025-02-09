@@ -72,6 +72,7 @@ const popupWithImage = new PopupWithImage("#preview-image");
 
 function handleImageClick(data) {
   popupWithImage.open({ name: data.name, link: data.link });
+  popupWithImage.setEventListners();
 }
 
 function renderCard(cardData) {
@@ -112,17 +113,20 @@ addFormValidator.enableValidation();
 
 function handleProfileEditSubmit({name, job}){
   userInfo.setUserInfo({name, job});
-  close(profileEditModal);
 };
 
 function handleNewCardSubmit(e){
-  e.preventDefault();
   const name = cardTitleInput.value;
   const link = cardUrlInput.value;
   renderCard({ name, link}, cardListEl);
   e.target.reset();
-  close(addCardModal);
 };
+
+popupWithEditProfileForm.setEventListeners();
+
+newCardPopup.setEventListeners();
+
+
 
 profileEditButton.addEventListener("click", () => {
   const userData = userInfo.getUserInfo();
@@ -139,6 +143,7 @@ addNewCardButton.addEventListener( "click" , () => {
 
 
 profileEditForm.addEventListener("submit", handleProfileEditSubmit);
+
 
 addCardForm.addEventListener("submit", handleNewCardSubmit);
 

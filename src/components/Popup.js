@@ -2,8 +2,8 @@
     constructor({popupselector}) {
         this.popupelement = document.querySelector(popupselector)
         this.openedModal = document.querySelector(".modal_opened");
-        this.handleEsc = this.handleEsc.bind(this);
-        this.handleModalClick = this.handleModalClick.bind(this);
+        this.handleEsc = this.handleEsc;
+        this.handleModalClick = this.handleModalClick;
     }
 
     open () {
@@ -18,16 +18,20 @@
       this.popupelement.removeEventListener("mousedown", this.handleModalClick);
     }
 
-    handleEsc(e) {
-     if (e.key === "Escape") {
-            this.close(this.openedModal);
-          }
+    _handleEscClose(event) {
+      if (event.key === "Escape") {
+        this.close();
+      }
     }
-
-    handleModalClick(e) {
-            if (e.currentTarget === e.target || e.target.classList.contains("modal__close-button")) {
-              this.close(e.currentTarget)
-            }
-    } 
-
-};
+  
+    setEventListners() {
+      this.popupelement.addEventListener("mousedown", (event) => {
+        if (
+          event.target.classList.contains("modal_opened") ||
+          event.target.classList.contains("modal__close-button")
+        ) {
+          this.close();
+        }
+      });
+    }
+  }
