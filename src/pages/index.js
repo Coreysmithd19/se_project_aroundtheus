@@ -98,7 +98,7 @@ const popupWithEditProfileForm = new PopupWithForm(
 
 const newCardPopup = new PopupWithForm(
   "#add-card-modal",
-  handleProfileEditSubmit
+  handleNewCardSubmit
 );
 
 
@@ -111,16 +111,13 @@ const addFormValidator = new FormValidator( config, addCardForm );
 editFormValidator.enableValidation();
 addFormValidator.enableValidation();
 
-function handleProfileEditSubmit({name, job}){
-  userInfo.setUserInfo({name, job});
+function handleProfileEditSubmit({title, description }){
+  userInfo.setUserInfo(title, description);
 };
 
-function handleNewCardSubmit(e){
-  const name = cardTitleInput.value;
-  const link = cardUrlInput.value;
-  renderCard({ name, link}, cardListEl);
-  e.target.reset();
-};
+function handleNewCardSubmit({ name, url }) {
+  renderCard({ name, link: url }, cardListEl);
+}
 
 popupWithEditProfileForm.setEventListeners();
 
@@ -142,20 +139,11 @@ addNewCardButton.addEventListener( "click" , () => {
 
 
 
-profileEditForm.addEventListener("submit", handleProfileEditSubmit);
-
-
-addCardForm.addEventListener("submit", handleNewCardSubmit);
-
-
-initialCards.forEach((cardData) => renderCard(cardData));
-
-
   const cardSection = new Section(
     {
       items: initialCards,
       renderer: (cardData) => {
-        const card = new Card(cardData, "#card-template" , handleImageClick);
+        const card = new Card( cardData,"#card-template" , handleImageClick);
         const cardElement = card.getView();
         cardSection.addItem(cardElement);
       },
