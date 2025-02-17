@@ -13,4 +13,10 @@ export default class PopupWithImage extends Popup {
        this.previewImageTitle.textContent = data.name;
        super.open();
     }
+
+    close() {
+        super.close();
+    }
+
 }
+ 
