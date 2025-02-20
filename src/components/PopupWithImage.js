@@ -1,8 +1,8 @@
 import Popup from "./Popup";
 
 export default class PopupWithImage extends Popup {
-    constructor(popupselector){
-        super({popupselector})
+    constructor(popupSelector){
+        super({popupSelector})
        this.previewImage = document.querySelector(".modal__imgae_popup");
        this.previewImageTitle = document.querySelector(".modal__title");
     }
@@ -12,10 +12,6 @@ export default class PopupWithImage extends Popup {
        this.previewImage.alt = data.name;
        this.previewImageTitle.textContent = data.name;
        super.open();
-    }
-
-    close() {
-        super.close();
     }
 
 }

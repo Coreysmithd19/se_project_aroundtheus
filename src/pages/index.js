@@ -44,6 +44,8 @@ function getCardElement(cardData) {
 
 const popupWithImage = new PopupWithImage("#preview-image");
 
+popupWithImage.setEventListners();
+
 
 function handleImageClick(data) {
   popupWithImage.open({ name: data.name, link: data.link });
@@ -107,10 +109,7 @@ addNewCardButton.addEventListener( "click" , () => {
   const cardSection = new Section(
     {
       items: initialCards,
-      renderer: (cardData) => {
-        const cardElement = getCardElement(cardData);
-        cardSection.addItem(cardElement);
-      },
+      renderer: renderCard,
     },
     ".cards__list");
 
