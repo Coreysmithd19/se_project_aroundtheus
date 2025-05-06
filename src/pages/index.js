@@ -11,6 +11,7 @@ import PopupWithForm from "../components/PopupWithForm.js"
 import PopupWithImage from "../components/PopupWithImage.js";
 import UserInfo from "../components/Userinfo.js";
 import {initialCards,config} from "../utils/constants.js"
+import Api from "../components/Api.js";
 
 
 
@@ -70,6 +71,13 @@ const newCardPopup = new PopupWithForm(
 
 
 const userInfo = new UserInfo(profileTitle, profileDescription)
+
+const api = new Api({
+  baseUrl: " https://around-api.en.tripleten-services.com/v1",
+  authToken: "6bc379b4-e2fd-4963-8b35-f48b85a38b35"
+})
+
+api.getInitialCards().then( res => console.log(res));
 
 
 
