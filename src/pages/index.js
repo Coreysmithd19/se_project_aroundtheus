@@ -35,6 +35,7 @@ const previewImageTitle = document.querySelector(".modal__title");
 const addCardForm = addCardModal.querySelector("#add-card-form");
 const cardTitleInput = addCardForm.querySelector("#place-title");
 const cardUrlInput = addCardForm.querySelector("#place-image");
+const profileImage = document.querySelector(".profile__image")
 
 
 
@@ -70,15 +71,17 @@ const newCardPopup = new PopupWithForm(
 );
 
 
-const userInfo = new UserInfo(profileTitle, profileDescription)
+const userInfo = new UserInfo(profileTitle, profileDescription, profileImage)
 
 const api = new Api({
-  baseUrl: " https://around-api.en.tripleten-services.com/v1",
-  authToken: "6bc379b4-e2fd-4963-8b35-f48b85a38b35"
-})
+  baseUrl: "https://around-api.en.tripleten-services.com/v1",
+  headers: {
+    authorization: "6bc379b4-e2fd-4963-8b35-f48b85a38b35",
+    "Content-Type": "application/json"
+  }
+});
 
-api.getInitialCards().then( res => console.log(res));
-
+api.profileEdit(res) .then(res => console.log(res));
 
 
 const editFormValidator = new FormValidator( config, profileEditForm );
@@ -87,12 +90,12 @@ editFormValidator.enableValidation();
 addFormValidator.enableValidation();
 
 function handleProfileEditSubmit({title, description }){
-  userInfo.setUserInfo(title, description);
+  api.profileEdit(title,description).then((title, description) => {userInfo.setUserInfo(title,description)});
 };
 
 function handleNewCardSubmit({ name, url }) {
   renderCard({ name, link: url }, cardListEl);
-}
+};
 
 popupWithEditProfileForm.setEventListeners();
 
@@ -116,10 +119,11 @@ addNewCardButton.addEventListener( "click" , () => {
 
   const cardSection = new Section(
     {
-      items: initialCards,
       renderer: renderCard,
     },
     ".cards__list");
 
-cardSection.renderItems();
 
+api.getInitialCards().then( res => cardSection.renderItems(res));
+
+api.getUserInfo().then( res => userInfo.setUserInfo(res));
