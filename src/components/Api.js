@@ -20,7 +20,7 @@ export default class Api {
   }
 
   getUserInfo() {
-    return fetch(`${this._baseUrl}/users`, {
+    return fetch(`${this._baseUrl}/users/me`, {
 
       headers: 
         this._headers
@@ -34,33 +34,35 @@ export default class Api {
       
   }
 
-  profileEdit({title, description}) {
-    return fetch(`${this._baseUrl}/users/me`,{
-      method: "PATCH",
-      headers: this._headers,
-      body: Json.stringify({
-        title: title,
-        description:description
-      })
-      .then(res => res.ok ? res.json(): Promise.reject('Error: ${res.status}'))
-     });
-    }
+ profileEdit({ title, description }) {
+  return fetch(`${this._baseUrl}/users/me`, {
+    method: "PATCH",
+    headers: this._headers,
+    body: JSON.stringify({
+      name: title,
+      about: description,
+    }),
+  }).then((res) =>
+    res.ok ? res.json() : Promise.reject("Error: ${res.status}"),
+  );
+}
     
 
 
- addCard(name, link) {
-  fetch(`${this._baseUrl}/cards`, {
+ addCard({name, link}) {
+  return fetch(`${this._baseUrl}/cards`, {
     method: "POST",
-    headers:
-     this._headers
-  ,
+    headers:this._headers,
     body: JSON.stringify({
       name,
-      link
-    })
-  });
+      link,
+    }),
+   }).then((res) =>
+    res.ok ? res.json() : Promise.reject("Error: ${res.status}"),
+  );
+}
+
+
+
  }
 
-
-
-}

@@ -81,7 +81,7 @@ const api = new Api({
   }
 });
 
-api.profileEdit(res) .then(res => console.log(res));
+
 
 
 const editFormValidator = new FormValidator( config, profileEditForm );
@@ -89,13 +89,17 @@ const addFormValidator = new FormValidator( config, addCardForm );
 editFormValidator.enableValidation();
 addFormValidator.enableValidation();
 
-function handleProfileEditSubmit({title, description }){
-  api.profileEdit(title,description).then((title, description) => {userInfo.setUserInfo(title,description)});
-};
 
-function handleNewCardSubmit({ name, url }) {
-  renderCard({ name, link: url }, cardListEl);
-};
+function handleProfileEditSubmit({ title, description }) {
+  api.profileEdit({ title, description }).then((title, description) => {
+    userInfo.setUserInfo(title, description);
+  });
+}
+
+function handleNewCardSubmit({ name, url:link  }) {
+ api.addCard({name, link }).then((name, link) => { renderCard(({name, url:link }), cardListEl);
+  });
+}
 
 popupWithEditProfileForm.setEventListeners();
 
