@@ -11,7 +11,7 @@ export default class Api {
         this._headers
       ,
     })
-      .then(res => res.ok ? res.json(): Promise.reject('Error: ${res.status}'))
+      .then(res => res.ok ? res.json(): Promise.reject(`Error: ${res.status}`))
  
         .catch((err) => {
           console.error(err);
@@ -26,7 +26,7 @@ export default class Api {
         this._headers
       ,
     })
-      .then(res => res.ok ? res.json(): Promise.reject('Error: ${res.status}'))
+      .then(res => res.ok ? res.json(): Promise.reject(`Error: ${res.status}`))
  
         .catch((err) => {
           console.error(err);
@@ -43,7 +43,7 @@ export default class Api {
       about: description,
     }),
   }).then((res) =>
-    res.ok ? res.json() : Promise.reject("Error: ${res.status}"),
+    res.ok ? res.json() : Promise.reject(`Error: ${res.status}`),
   );
 }
     
@@ -58,11 +58,22 @@ export default class Api {
       link,
     }),
    }).then((res) =>
-    res.ok ? res.json() : Promise.reject("Error: ${res.status}"),
+    res.ok ? res.json() : Promise.reject(`Error: ${res.status}`),
   );
 }
 
-
+deleteCard(cardId) {
+  return fetch(`${this._baseUrl}/cards/${cardId}`, {
+    method: "DELETE",
+    headers: this._headers,
+  })
+  .then(res => {
+    if (res.ok) {
+      return res.json();
+    }
+    return Promise.reject(`Error: ${res.status}`);
+  });
+}
 
  }
 
